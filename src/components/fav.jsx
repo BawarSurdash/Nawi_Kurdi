@@ -29,34 +29,40 @@ const Fav = () => {
           {favorites.length > 0 ? (
             favorites.map((item, index) => (
               <div key={`${item.name}-${index}`} className="mb-4">
-                <Card 
-                  dir="rtl"
-                  title={`${item.name} - ${item.gender}`}
-                  variant="borderless"
-                  className="kurdish-font transform-gpu"
-                  style={{
-                    width: 800,
-                    height: 220,
-                    backgroundColor: '#e5e7eb',
-                    maxWidth: '100%',
-                  }}
-                >
-                  <p className="kurdish-font mb-6">{item.desc}</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-center">
-                    <p 
-                      onClick={() => handleRemoveFromFavorites(item)}
-                      className="hover:bg-red-600 hover:text-white p-2 transition-colors duration-200 cursor-pointer rounded-md"
-                    >
-                      Remove from Favorites
-                    </p>
-                    <p className="p-2">
-                      positive vote {item.positive_votes}
-                    </p>
-                    <p className="p-2">
-                      negative vote {item.negative_votes}
-                    </p>
-                  </div>
-                </Card>
+              <Card 
+  dir="rtl"
+  title={`${item.name} - ${
+    item.gender === 'M' ? 'کوڕ' : 
+    item.gender === 'F' ? 'کچ' : 
+    'هاوبەش'
+  }`}
+  variant="borderless"
+  className="kurdish-font transform-gpu"
+  style={{
+    width: '100%', 
+    maxWidth: 800, // Keep lg screens perfect
+    height: 'auto', 
+    backgroundColor: '#e5e7eb',
+    padding: '1rem',
+  }}
+>
+  <p className="kurdish-font mb-4 text-sm sm:text-base">{item.desc}</p>
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-center">
+    <p 
+      onClick={() => handleRemoveFromFavorites(item)}
+      className="hover:bg-red-600 hover:text-white p-2 transition-colors duration-200 cursor-pointer rounded-md text-xs sm:text-sm"
+    >
+      لابردن لیستی دڵخواز
+    </p>
+    <p className="hover:bg-blue-950 hover:text-white p-2 transition-colors duration-200 cursor-pointer rounded-md">
+                  دەنگی ئەرێنی {item.positive_votes}
+                </p>
+                <p className="hover:bg-blue-950 hover:text-white p-2 transition-colors duration-200 cursor-pointer rounded-md">
+                دەنگی نەرێنی {item.negative_votes}
+              </p>
+  </div>
+</Card>
+
               </div>
             ))
           ) : (
