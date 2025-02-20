@@ -7,21 +7,26 @@ import AddName from './components/addname'
 import Fav from './components/fav'
 import Messenger from './components/messenger'
 import Navbar from './components/navbar'
+import Setting from './components/setting'
+import { LanguageProvider } from './contexts/LanguageContext'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/addname' element={<AddName />} />
-        <Route path='/fav' element={<Fav />} />
-        <Route path='/messenger' element={<Messenger />} />
-      </Routes>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/addname' element={<AddName />} />
+          <Route path='/fav' element={<Fav />} />
+          <Route path='/setting' element={<Setting />} />
+          <Route path='/messenger' element={<Messenger />} />
+        </Routes>
+      </Router>
+    </LanguageProvider>
   )
 }
 
